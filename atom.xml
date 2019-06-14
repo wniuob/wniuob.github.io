@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>wniu</title>
+  
+  <subtitle>采菊东篱下</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="/"/>
+  <updated>2019-06-13T14:06:27.140Z</updated>
+  <id>/</id>
+  
+  <author>
+    <name>wniu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>接口(interface)的概念</title>
+    <link href="/2019/06/13/interface/"/>
+    <id>/2019/06/13/interface/</id>
+    <published>2019-06-13T13:49:54.000Z</published>
+    <updated>2019-06-13T14:06:27.140Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="PHP接口（interface）的特点"><a href="#PHP接口（interface）的特点" class="headerlink" title="PHP接口（interface）的特点"></a>PHP接口（interface）的特点</h3><ol><li>接口的方法必须是公开的。 </li><li>接口的方法默认是抽象的，所以不在方法名前面加abstract。 </li><li>接口可以定义常量，但不能定义成员属性，常量的定义和用法和类中常量一样。 <a id="more"></a></li><li>类可以实现多个接口（相当于把多个功能集于一身，如厨房有各种厨具） </li><li>接口也可以继承接口。<br>PHP同大多数的面向对象语言一样，并不支持多重继承。如果需要实现多重继承功能，在PHP中，可以通过接口，它是PHP解决多重继承问题的方法，在php5.4版本之后有个类的新特性trait，有兴趣的可以自行了解下。</li></ol><p>接口的思想是指定一个实现了该接口的类必须实现的一系列函数。如果没有实现接口中指定的方法，将产生一个致命错误。<br>当有很多人一起开发一个项目时，可能都会去调用别人写的一些类，那你就会问，我怎么知道他的某个功能的实现方法是怎么命名的呢，这个时候PHP接口类interface就起到作用了，当我们定义了一个接口类时，它里面的方式是下面的子类必须实现的，比如 :<br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">Shop</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">buy</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">sell</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">view</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>我声明一个shop接口类，定义了三个方法：买(buy),卖(sell),浏览(view),那么继承此类的所有子类都必须实现这3个方法少一个都不行，如果子类没有实现这些话，就无法运行。实际上接口类说白了，就是一个类的模板，一个类的规定，如果你属于这类，你就必须遵循我的规定，少一个都不行，但是具体你怎么去做，我不管，那是你的事，如： </p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> <span class="keyword">implements</span> <span class="title">Shop</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">buy</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Implement tebuyst() method.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sell</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Implement sell() method.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">view</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Implement view() method.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;PHP接口（interface）的特点&quot;&gt;&lt;a href=&quot;#PHP接口（interface）的特点&quot; class=&quot;headerlink&quot; title=&quot;PHP接口（interface）的特点&quot;&gt;&lt;/a&gt;PHP接口（interface）的特点&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;接口的方法必须是公开的。 &lt;/li&gt;
+&lt;li&gt;接口的方法默认是抽象的，所以不在方法名前面加abstract。 &lt;/li&gt;
+&lt;li&gt;接口可以定义常量，但不能定义成员属性，常量的定义和用法和类中常量一样。&lt;/li&gt;&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="php" scheme="/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Vultr搭建自用ssr</title>
+    <link href="/2019/06/01/ssr/"/>
+    <id>/2019/06/01/ssr/</id>
+    <published>2019-06-01T06:12:04.000Z</published>
+    <updated>2019-06-14T03:16:23.295Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-购买vps服务器"><a href="#1-购买vps服务器" class="headerlink" title="1 . 购买vps服务器"></a>1 . 购买vps服务器</h1><ul><li>去 <a href="https://www.vultr.com/" target="_blank" rel="noopener">Vultr</a> 官网注册一个账号。<a id="more"></a><h3 id="选择服务器位置"><a href="#选择服务器位置" class="headerlink" title="选择服务器位置"></a>选择服务器位置</h3><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/first.png" alt></li></ul><h3 id="选择系统类型"><a href="#选择系统类型" class="headerlink" title="选择系统类型"></a>选择系统类型</h3><p><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/second.png" alt></p><h3 id="服务器配置选择-一般个人使用选最低价格就好"><a href="#服务器配置选择-一般个人使用选最低价格就好" class="headerlink" title="服务器配置选择(一般个人使用选最低价格就好)"></a>服务器配置选择(一般个人使用选最低价格就好)</h3><p><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/three.png" alt></p><p><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/four.png" alt></p><ul><li>最后选择 Deploy Now 开始部署服务器</li></ul><h1 id="2-完成购买"><a href="#2-完成购买" class="headerlink" title="2. 完成购买"></a>2. 完成购买</h1><ul><li><p>在 Servers 里面可以看到部署好的服务器，点击 Manage 查看服务器信息。<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/6.jpg" alt></p></li><li><p>点击查看服务体具体信息<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/7.png" alt></p></li><li><p>连接服务器 mac可以直接打开终端  </p></li><li><p>windows连接服务器可选择 xshell </p><p>  <code>$ ssh -p 22 root@your IP Address</code></p></li><li><p>回车 输入密码  看到如下图<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/8.png" alt></p></li><li><p>执行以下命令 </p><p>  <code>$ wget --no-check-certificate https://freed.ga/github/shadowsocksR.sh; bash shadowsocksR.sh</code></p></li><li><p>若提示：wget :command not found 执行以下命令 </p><p>  <code>$ yum install wget -y</code></p></li><li><p>密码可使用默认 也可以自己设置 回车<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/1.png" alt></p></li><li><p>端口按推荐设置 回车<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/2.png" alt></p></li><li><p>任意键开始搭建 耐心等待<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/3.png" alt></p></li><li><p>安装好后如下图 界面显示ssr信息<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/5.png" alt></p></li><li><p>配置好小飞机就可以科学上网啦<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/ssr/9.png" alt></p></li></ul><h1 id="ssr客户端下载"><a href="#ssr客户端下载" class="headerlink" title="ssr客户端下载"></a>ssr客户端下载</h1><ul><li><p><a href="https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases" target="_blank" rel="noopener">mac版本下载</a></p></li><li><p><a href="https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases" target="_blank" rel="noopener">win版本下载</a></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-购买vps服务器&quot;&gt;&lt;a href=&quot;#1-购买vps服务器&quot; class=&quot;headerlink&quot; title=&quot;1 . 购买vps服务器&quot;&gt;&lt;/a&gt;1 . 购买vps服务器&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;去 &lt;a href=&quot;https://www.vultr.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Vultr&lt;/a&gt; 官网注册一个账号。&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>挂载oss</title>
+    <link href="/2019/05/31/oss/"/>
+    <id>/2019/05/31/oss/</id>
+    <published>2019-05-31T08:55:46.000Z</published>
+    <updated>2019-06-14T02:58:36.244Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="下载oss安装包"><a href="#下载oss安装包" class="headerlink" title="下载oss安装包"></a>下载oss安装包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32196/cn_zh/1507811577850/ossfs_1.80.3_centos7.0_x86_64.rpm</span><br></pre></td></tr></table></figure><a id="more"></a> <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum localinstall ossfs_1.80.3_centos7.0_x86_64.rpm</span><br></pre></td></tr></table></figure><h4 id="设置bucket-name-和-AccessKeyId-Secret信息，将其存放在-etc-passwd-ossfs-文件中"><a href="#设置bucket-name-和-AccessKeyId-Secret信息，将其存放在-etc-passwd-ossfs-文件中" class="headerlink" title="设置bucket name 和 AccessKeyId/Secret信息，将其存放在/etc/passwd-ossfs 文件中"></a>设置bucket name 和 AccessKeyId/Secret信息，将其存放在/etc/passwd-ossfs 文件中</h4> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> my-bucket:my-access-key-id:my-access-key-secret &gt; /etc/passwd-ossfs</span><br><span class="line">$ chmod 640 /etc/passwd-ossfs</span><br></pre></td></tr></table></figure><h4 id="将OSS-bucket-mount到指定挂载程序目录。"><a href="#将OSS-bucket-mount到指定挂载程序目录。" class="headerlink" title="将OSS bucket mount到指定挂载程序目录。"></a>将OSS bucket mount到指定挂载程序目录。</h4> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ossfs my-bucket my-mount-point -ourl=my-oss-endpoint</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;下载oss安装包&quot;&gt;&lt;a href=&quot;#下载oss安装包&quot; class=&quot;headerlink&quot; title=&quot;下载oss安装包&quot;&gt;&lt;/a&gt;下载oss安装包&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ wget http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32196/cn_zh/1507811577850/ossfs_1.80.3_centos7.0_x86_64.rpm&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
