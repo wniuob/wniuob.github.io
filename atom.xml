@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-06-13T14:06:27.140Z</updated>
+  <updated>2019-06-17T09:37:34.355Z</updated>
   <id>/</id>
   
   <author>
@@ -17,11 +17,86 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>http / https 详解</title>
+    <link href="/2019/06/17/http/"/>
+    <id>/2019/06/17/http/</id>
+    <published>2019-06-17T09:12:36.000Z</published>
+    <updated>2019-06-17T09:37:34.355Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="HTTP和HTTPS基本概念"><a href="#HTTP和HTTPS基本概念" class="headerlink" title="HTTP和HTTPS基本概念"></a>HTTP和HTTPS基本概念</h3><p>　　深入学习这个东西前，我们先来从维基百科上看看它俩的概念。</p><ul><li>HTTP:超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议[1]。HTTP是万维网的数据通信的基础。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。　　</li><li>HTTPS：超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种通过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用SSL/TLS来加密数据包。HTTPS开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。这个协议由网景公司（Netscape）在1994年首次提出，随后扩展到互联网上。历史上，HTTPS连接经常用于万维网上的交易支付和企业信息系统中敏感信息的传输。在2000年代晚期和2010年代早期，HTTPS开始广泛使用于保护所有类型网站上的网页真实性，保护账户和保持用户通信，身份和网络浏览的私密性。</li></ul><h3 id="HTTP和HTTPS的差异"><a href="#HTTP和HTTPS的差异" class="headerlink" title="HTTP和HTTPS的差异"></a>HTTP和HTTPS的差异</h3><ol><li>从上面概念也可以看出来HTTP是不安全的，且攻击者通过监听和中间人攻击等手段，可以获取网站帐户和敏感信息等。HTTPS被设计为可防止前述攻击，并在正确配置时被认为是安全的.  　　</li><li>HTTP的URL由“http://”起始且默认使用端口80，而HTTPS的URL由“https://”起始且默认使用端口443。　　</li><li>HTTP协议运行在TCP之上，所有传输的内容都是明文，客户端和服务器端都无法验证对方的身份。HTTPS是运行在SSL/TLS之上的HTTP协议，SSL/TLS运行在TCP之上。所有传输的内容都经过加密，加密采用对称加密，但对称加密的密钥用服务器方的证书进行了非对称加密。　　  <ul><li>对称加密：密钥只有一个，加密解密为同一个密码，且加解密速度快，典型的对称加密算法有DES、AES等；　　  </li><li>非对称加密：密钥成对出现（且根据公钥无法推知私钥，根据私钥也无法推知公钥），加密解密使用不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等。<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/reprinted/ssl.png" alt></li></ul></li></ol><h3 id="HTTPS工作原理"><a href="#HTTPS工作原理" class="headerlink" title="HTTPS工作原理"></a>HTTPS工作原理</h3><h5 id="下面看一下网站访问过程："><a href="#下面看一下网站访问过程：" class="headerlink" title="下面看一下网站访问过程："></a>下面看一下网站访问过程：</h5><p>大家很明显发现目前大部分网站使用的还是http协议，下面我们通过一个图片很容易的了解一下网站访问的一个过程。<br><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/reprinted/ip.png" alt="网站访问过程"></p><h5 id="了解完网站访问后我们来看一下使用HTTPS的工作原理"><a href="#了解完网站访问后我们来看一下使用HTTPS的工作原理" class="headerlink" title="了解完网站访问后我们来看一下使用HTTPS的工作原理"></a>了解完网站访问后我们来看一下使用HTTPS的工作原理</h5><p><img src="https://wniu.oss-cn-shenzhen.aliyuncs.com/reprinted/ht.png" alt="网站访问过程"></p><ol><li>客户使用HTTPS的URL访问Web服务器，要求与Web服务器建立SSL连接。　　</li><li>Web服务器收到客户端请求后，会将网站的证书信息（证书中包含公钥）传送一份给客户端。　</li><li>客户端的浏览器与Web服务器开始协商SSL/TLS连接的安全等级，也就是信息加密的等级。　　</li><li>客户端的浏览器根据双方同意的安全等级，建立会话密钥，然后利用网站的公钥将会话密钥加密，并传送给网站。　　</li><li>Web服务器利用自己的私钥解密出会话密钥。</li><li>Web服务器利用会话密钥加密与客户端之间的通信。</li></ol><h5 id="从上面可以总结出HTTPS的优点："><a href="#从上面可以总结出HTTPS的优点：" class="headerlink" title="从上面可以总结出HTTPS的优点："></a>从上面可以总结出HTTPS的优点：</h5><ol><li>客户端产生的密钥只有客户端和服务器端能得到；　　</li><li>加密的数据只有客户端和服务器端才能得到明文；　　</li><li>客户端到服务端的通信是安全的。<br>另外谷歌曾在2014年8月份调整搜索引擎算法，并称“比起同等HTTP网站，采用HTTPS加密的网站在搜索结果中的排名将会更高”。</li></ol><h3 id="HTTPS的局限-缺点"><a href="#HTTPS的局限-缺点" class="headerlink" title="HTTPS的局限/缺点"></a>HTTPS的局限/缺点</h3><p>　　我们说了这么多HTTPS的优点，难道它就没有缺点或者说是局限吗？当然有，毕竟万物不可完美！　　</p><ol><li>HTTPS比HTTP耗费更多服务器资源（https其实就是建构在SSL/TLS之上的 http协议，所以要比较https比http多用多少服务器资源，主要看SSL/TLS本身消耗多少服务器资源。）</li><li>耗费的资源多，过程也复杂，想当然访问不如HTTP高效。大流量网站非必要也不会采用，流量成本太高。　　</li><li>HTTPS并不能防止站点被网络蜘蛛抓取。在某些情形中，被加密资源的URL可仅通过截获请求和响应的大小推得，这就可使攻击者同时知道明文（公开的静态内容）和密文（被加密过的明文），从而使选择密文攻击成为可能。　　</li><li>SSL证书需要钱，功能越强大的证书费用越高，个人网站、小网站没有必要一般不会用。　　</li><li>SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。</li></ol><p>此文转自<a href="https://juejin.im/post/5a030e326fb9a0450a66c8ea" target="_blank" rel="noopener">掘金</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;HTTP和HTTPS基本概念&quot;&gt;&lt;a href=&quot;#HTTP和HTTPS基本概念&quot; class=&quot;headerlink&quot; title=&quot;HTTP和HTTPS基本概念&quot;&gt;&lt;/a&gt;HTTP和HTTPS基本概念&lt;/h3&gt;&lt;p&gt;　　深入学习这个东西前，我们先来从维基百科上
+      
+    
+    </summary>
+    
+    
+      <category term="http&amp;https" scheme="/tags/http-https/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php常见的魔术方法</title>
+    <link href="/2019/06/17/magic/"/>
+    <id>/2019/06/17/magic/</id>
+    <published>2019-06-17T09:06:25.000Z</published>
+    <updated>2019-06-17T09:08:47.491Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>__construct 构造函数 初始化赋值 实例化对象的时候自己调用</p></li><li><p>__destruct 析构方法，PHP 将在对象被销毁前（即从内存中清除前）调用这个方法</p></li><li><p>__get ($property) 当调用一个未定义的属性时，此方法会被触发，传递的参数是被访问的属性名</p></li><li><p>__set ($property, $value) 给一个未定义的属性赋值时，此方法会被触发，传递的参数是被设置的属性名和值 这里的没有声明包括当使用对象调用时，访问控制为 proteced,private 的属性（即没有权限访问的属性）。</p></li><li><p>__isset ($property) 当在一个未定义的属性上调用 isset () 函数时调用此方法</p></li><li><p>__unset ($property) 当在一个未定义的属性上调用 unset () 函数时调用此方法</p></li><li><p>_call ($method, $arg_array) 当调用一个未定义的方法是调用此方法</p></li><li><p>__autoload 函数，它会在试图使用尚未被定义的类时自动调用。通过调用此函数，脚本引擎在 PHP 出错失败前有了最后一个机会加载所需的类。</p></li><li><p>clone 复制一个对象时自动调用 clone 方法，如果在对象复制需要执行某些初始化操作，可以在 clone 方法实现。</p></li><li><p>__toString 方法在将一个对象转化成字符串时自动调用，比如使用 echo 打印对象时。</p></li><li><p>__sleep 串行化的时候用</p></li><li><p>callStatic 它的工作方式类似于 call () 魔术方法，__callStatic () 是为了处理静态方法调用</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;__construct 构造函数 初始化赋值 实例化对象的时候自己调用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;__destruct 析构方法，PHP 将在对象被销毁前（即从内存中清除前）调用这个方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;__get ($prope
+      
+    
+    </summary>
+    
+    
+      <category term="php" scheme="/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown</title>
+    <link href="/2019/06/17/markdown/"/>
+    <id>/2019/06/17/markdown/</id>
+    <published>2019-06-17T05:55:29.000Z</published>
+    <updated>2019-06-17T06:22:52.751Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="markdown-笔记"><a href="#markdown-笔记" class="headerlink" title="markdown 笔记"></a>markdown 笔记</h1><ul><li><p>基本语法可参考 <a href="http://xianbai.me/learn-md/index.html" target="_blank" rel="noopener">Markdown 入门参考</a></p></li><li><p>markdown 可支持html写法 所以可使用html扩展页面</p></li></ul><ol><li><p>修改字体颜色  </p><p> <code>&lt;font color=&quot;颜色（red）&quot;&gt;修改字体颜色为红色&lt;/font&gt;</code><br><font color="red">修改字体颜色为红色</font></p></li><li><p>同理 修改字体大小 </p><p> <code>&lt;font size=&quot;1&quot;&gt;修改字体大小&lt;/font&gt;</code><br> <font size="1">修改字体大小</font></p></li><li><p>文字居中<br> <code>&lt;center&gt;wniu&lt;/center&gt;</code>  </p> <center>wniu</center></li><li><p>图片设置宽高 居中显示<br> <code>&lt;div align=center&gt;&lt;img width = &#39;宽度(50)&#39; height =&#39;高度(50)&#39; src =&quot;图片链接&quot;/&gt;&lt;/div&gt;</code></p> <div align="center"><img width="50" height="50" src="https://wniu.oss-cn-shenzhen.aliyuncs.com/art/about/about.jpg"></div></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;markdown-笔记&quot;&gt;&lt;a href=&quot;#markdown-笔记&quot; class=&quot;headerlink&quot; title=&quot;markdown 笔记&quot;&gt;&lt;/a&gt;markdown 笔记&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;基本语法可参考 &lt;a href=&quot;http://x
+      
+    
+    </summary>
+    
+    
+      <category term="markdown" scheme="/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
     <title>接口(interface)的概念</title>
     <link href="/2019/06/13/interface/"/>
     <id>/2019/06/13/interface/</id>
     <published>2019-06-13T13:49:54.000Z</published>
-    <updated>2019-06-13T14:06:27.140Z</updated>
+    <updated>2019-06-17T09:37:58.003Z</updated>
     
     <content type="html"><![CDATA[<h3 id="PHP接口（interface）的特点"><a href="#PHP接口（interface）的特点" class="headerlink" title="PHP接口（interface）的特点"></a>PHP接口（interface）的特点</h3><ol><li>接口的方法必须是公开的。 </li><li>接口的方法默认是抽象的，所以不在方法名前面加abstract。 </li><li>接口可以定义常量，但不能定义成员属性，常量的定义和用法和类中常量一样。 <a id="more"></a></li><li>类可以实现多个接口（相当于把多个功能集于一身，如厨房有各种厨具） </li><li>接口也可以继承接口。<br>PHP同大多数的面向对象语言一样，并不支持多重继承。如果需要实现多重继承功能，在PHP中，可以通过接口，它是PHP解决多重继承问题的方法，在php5.4版本之后有个类的新特性trait，有兴趣的可以自行了解下。</li></ol><p>接口的思想是指定一个实现了该接口的类必须实现的一系列函数。如果没有实现接口中指定的方法，将产生一个致命错误。<br>当有很多人一起开发一个项目时，可能都会去调用别人写的一些类，那你就会问，我怎么知道他的某个功能的实现方法是怎么命名的呢，这个时候PHP接口类interface就起到作用了，当我们定义了一个接口类时，它里面的方式是下面的子类必须实现的，比如 :<br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">Shop</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">buy</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">sell</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">view</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>我声明一个shop接口类，定义了三个方法：买(buy),卖(sell),浏览(view),那么继承此类的所有子类都必须实现这3个方法少一个都不行，如果子类没有实现这些话，就无法运行。实际上接口类说白了，就是一个类的模板，一个类的规定，如果你属于这类，你就必须遵循我的规定，少一个都不行，但是具体你怎么去做，我不管，那是你的事，如： </p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> <span class="keyword">implements</span> <span class="title">Shop</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">buy</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Implement tebuyst() method.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sell</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Implement sell() method.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">view</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Implement view() method.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     

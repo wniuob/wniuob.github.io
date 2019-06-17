@@ -132,16 +132,18 @@
 
 
 
-  <meta name="description" content="描述">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wniu">
-<meta property="og:url" content="/tags/php/index.html">
+  <meta name="description" content="__construct 构造函数 初始化赋值 实例化对象的时候自己调用  __destruct 析构方法，PHP 将在对象被销毁前（即从内存中清除前）调用这个方法  __get ($property) 当调用一个未定义的属性时，此方法会被触发，传递的参数是被访问的属性名  __set ($property, $value) 给一个未定义的属性赋值时，此方法会被触发，传递的参数是被设置的属性名和值">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php常见的魔术方法">
+<meta property="og:url" content="/2019/06/17/magic/index.html">
 <meta property="og:site_name" content="wniu">
-<meta property="og:description" content="描述">
+<meta property="og:description" content="__construct 构造函数 初始化赋值 实例化对象的时候自己调用  __destruct 析构方法，PHP 将在对象被销毁前（即从内存中清除前）调用这个方法  __get ($property) 当调用一个未定义的属性时，此方法会被触发，传递的参数是被访问的属性名  __set ($property, $value) 给一个未定义的属性赋值时，此方法会被触发，传递的参数是被设置的属性名和值">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-17T09:08:47.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wniu">
-<meta name="twitter:description" content="描述">
+<meta name="twitter:title" content="php常见的魔术方法">
+<meta name="twitter:description" content="__construct 构造函数 初始化赋值 实例化对象的时候自己调用  __destruct 析构方法，PHP 将在对象被销毁前（即从内存中清除前）调用这个方法  __get ($property) 当调用一个未定义的属性时，此方法会被触发，传递的参数是被访问的属性名  __set ($property, $value) 给一个未定义的属性赋值时，此方法会被触发，传递的参数是被设置的属性名和值">
 
 
 
@@ -151,7 +153,7 @@
 
   
   
-  <link rel="canonical" href="/tags/php/">
+  <link rel="canonical" href="/2019/06/17/magic/">
 
 
 
@@ -161,7 +163,7 @@
   };
 </script>
 
-  <title>标签: php | wniu</title>
+  <title>php常见的魔术方法 | wniu</title>
   
 
 
@@ -219,7 +221,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -295,7 +297,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -354,106 +356,210 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>php<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/06/17/magic/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wniu">
+      <meta itemprop="description" content="描述">
+      <meta itemprop="image" content="https://wniu.oss-cn-shenzhen.aliyuncs.com/pic/timg.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wniu">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/06/17/magic/" itemprop="url">
-            
-              <span itemprop="name">php常见的魔术方法</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">php常见的魔术方法
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-17T17:06:25+08:00" content="2019-06-17">
-          06-17
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-17 17:06:25 / 修改时间：17:08:47" itemprop="dateCreated datePublished" datetime="2019-06-17T17:06:25+08:00">2019-06-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2019/06/13/interface/" itemprop="url">
-            
-              <span itemprop="name">接口(interface)的概念</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-13T21:49:54+08:00" content="2019-06-13">
-          06-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <ul>
+<li><p>__construct 构造函数 初始化赋值 实例化对象的时候自己调用</p>
+</li>
+<li><p>__destruct 析构方法，PHP 将在对象被销毁前（即从内存中清除前）调用这个方法</p>
+</li>
+<li><p>__get ($property) 当调用一个未定义的属性时，此方法会被触发，传递的参数是被访问的属性名</p>
+</li>
+<li><p>__set ($property, $value) 给一个未定义的属性赋值时，此方法会被触发，传递的参数是被设置的属性名和值 这里的没有声明包括当使用对象调用时，访问控制为 proteced,private 的属性（即没有权限访问的属性）。</p>
+</li>
+<li><p>__isset ($property) 当在一个未定义的属性上调用 isset () 函数时调用此方法</p>
+</li>
+<li><p>__unset ($property) 当在一个未定义的属性上调用 unset () 函数时调用此方法</p>
+</li>
+<li><p>_call ($method, $arg_array) 当调用一个未定义的方法是调用此方法</p>
+</li>
+<li><p>__autoload 函数，它会在试图使用尚未被定义的类时自动调用。通过调用此函数，脚本引擎在 PHP 出错失败前有了最后一个机会加载所需的类。</p>
+</li>
+<li><p>clone 复制一个对象时自动调用 clone 方法，如果在对象复制需要执行某些初始化操作，可以在 clone 方法实现。</p>
+</li>
+<li><p>__toString 方法在将一个对象转化成字符串时自动调用，比如使用 echo 打印对象时。</p>
+</li>
+<li><p>__sleep 串行化的时候用</p>
+</li>
+<li><p>callStatic 它的工作方式类似于 call () 魔术方法，__callStatic () 是为了处理静态方法调用</p>
+</li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/17/markdown/" rel="next" title="markdown">
+                <i class="fa fa-chevron-left"></i> markdown
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/17/http/" rel="prev" title="http / https 详解">
+                http / https 详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -696,6 +802,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -711,6 +821,8 @@
 
   
 
+
+  
 
 
   
