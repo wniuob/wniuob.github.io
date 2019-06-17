@@ -27,6 +27,21 @@
 
 
 
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 <script>
 (function(){
     var bp = document.createElement('script');
@@ -130,8 +145,6 @@
 <meta name="twitter:description" content="描述">
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="wniu" type="application/atom+xml">
 
@@ -214,7 +227,7 @@
     </div>
     
       
-        <p class="site-subtitle">采菊东篱下</p>
+        <h1 class="site-subtitle" itemprop="description">采菊东篱下</h1>
       
     
     
@@ -362,9 +375,9 @@
     <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">Github
+<h2 class="post-title" itemprop="name headline">Github
 
-</h1>
+</h2>
 
 <div class="post-meta">
   
