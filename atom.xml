@@ -18,8 +18,8 @@
   
   <entry>
     <title>http / https 详解</title>
-    <link href="/2019/06/17/http/"/>
-    <id>/2019/06/17/http/</id>
+    <link href="/http/"/>
+    <id>/http/</id>
     <published>2019-06-17T09:12:36.000Z</published>
     <updated>2019-06-17T09:37:34.355Z</updated>
     
@@ -41,8 +41,8 @@
   
   <entry>
     <title>php常见的魔术方法</title>
-    <link href="/2019/06/17/magic/"/>
-    <id>/2019/06/17/magic/</id>
+    <link href="/magic/"/>
+    <id>/magic/</id>
     <published>2019-06-17T09:06:25.000Z</published>
     <updated>2019-06-17T09:08:47.491Z</updated>
     
@@ -69,8 +69,8 @@
   
   <entry>
     <title>markdown</title>
-    <link href="/2019/06/17/markdown/"/>
-    <id>/2019/06/17/markdown/</id>
+    <link href="/markdown/"/>
+    <id>/markdown/</id>
     <published>2019-06-17T05:55:29.000Z</published>
     <updated>2019-06-17T06:22:52.751Z</updated>
     
@@ -93,8 +93,8 @@
   
   <entry>
     <title>接口(interface)的概念</title>
-    <link href="/2019/06/13/interface/"/>
-    <id>/2019/06/13/interface/</id>
+    <link href="/interface/"/>
+    <id>/interface/</id>
     <published>2019-06-13T13:49:54.000Z</published>
     <updated>2019-06-17T09:37:58.003Z</updated>
     
@@ -116,8 +116,8 @@
   
   <entry>
     <title>使用Vultr搭建自用ssr</title>
-    <link href="/2019/06/01/ssr/"/>
-    <id>/2019/06/01/ssr/</id>
+    <link href="/ssr/"/>
+    <id>/ssr/</id>
     <published>2019-06-01T06:12:04.000Z</published>
     <updated>2019-06-15T14:59:43.953Z</updated>
     
@@ -137,8 +137,8 @@
   
   <entry>
     <title>挂载oss</title>
-    <link href="/2019/05/31/oss/"/>
-    <id>/2019/05/31/oss/</id>
+    <link href="/oss/"/>
+    <id>/oss/</id>
     <published>2019-05-31T08:55:46.000Z</published>
     <updated>2019-06-14T02:58:36.244Z</updated>
     
