@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/interface/</loc>
-    <lastmod>2019-06-17</lastmod>
+    <loc>/interface.html</loc>
+    <lastmod>2019-06-18</lastmod>
   </url>  <url>
-    <loc>/http/</loc>
-    <lastmod>2019-06-17</lastmod>
+    <loc>/http.html</loc>
+    <lastmod>2019-06-18</lastmod>
   </url>  <url>
-    <loc>/magic/</loc>
-    <lastmod>2019-06-17</lastmod>
+    <loc>/markdown.html</loc>
+    <lastmod>2019-06-18</lastmod>
   </url>  <url>
-    <loc>/markdown/</loc>
-    <lastmod>2019-06-17</lastmod>
+    <loc>/magic.html</loc>
+    <lastmod>2019-06-18</lastmod>
   </url>  <url>
-    <loc>/ssr/</loc>
-    <lastmod>2019-06-15</lastmod>
+    <loc>/oss.html</loc>
+    <lastmod>2019-06-18</lastmod>
   </url>  <url>
-    <loc>/oss/</loc>
-    <lastmod>2019-06-14</lastmod>
+    <loc>/ssr.html</loc>
+    <lastmod>2019-06-18</lastmod>
   </url>
 </urlset>

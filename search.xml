@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[http / https 详解]]></title>
+    <url>%2Fhttp.html</url>
+    <content type="text"><![CDATA[HTTP和HTTPS基本概念 深入学习这个东西前，我们先来从维基百科上看看它俩的概念。 HTTP:超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议[1]。HTTP是万维网的数据通信的基础。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。 HTTPS：超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种通过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用SSL/TLS来加密数据包。HTTPS开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。这个协议由网景公司（Netscape）在1994年首次提出，随后扩展到互联网上。历史上，HTTPS连接经常用于万维网上的交易支付和企业信息系统中敏感信息的传输。在2000年代晚期和2010年代早期，HTTPS开始广泛使用于保护所有类型网站上的网页真实性，保护账户和保持用户通信，身份和网络浏览的私密性。 HTTP和HTTPS的差异 从上面概念也可以看出来HTTP是不安全的，且攻击者通过监听和中间人攻击等手段，可以获取网站帐户和敏感信息等。HTTPS被设计为可防止前述攻击，并在正确配置时被认为是安全的. HTTP的URL由“http://”起始且默认使用端口80，而HTTPS的URL由“https://”起始且默认使用端口443。 HTTP协议运行在TCP之上，所有传输的内容都是明文，客户端和服务器端都无法验证对方的身份。HTTPS是运行在SSL/TLS之上的HTTP协议，SSL/TLS运行在TCP之上。所有传输的内容都经过加密，加密采用对称加密，但对称加密的密钥用服务器方的证书进行了非对称加密。 对称加密：密钥只有一个，加密解密为同一个密码，且加解密速度快，典型的对称加密算法有DES、AES等； 非对称加密：密钥成对出现（且根据公钥无法推知私钥，根据私钥也无法推知公钥），加密解密使用不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等。 HTTPS工作原理下面看一下网站访问过程：大家很明显发现目前大部分网站使用的还是http协议，下面我们通过一个图片很容易的了解一下网站访问的一个过程。 了解完网站访问后我们来看一下使用HTTPS的工作原理 客户使用HTTPS的URL访问Web服务器，要求与Web服务器建立SSL连接。 Web服务器收到客户端请求后，会将网站的证书信息（证书中包含公钥）传送一份给客户端。 客户端的浏览器与Web服务器开始协商SSL/TLS连接的安全等级，也就是信息加密的等级。 客户端的浏览器根据双方同意的安全等级，建立会话密钥，然后利用网站的公钥将会话密钥加密，并传送给网站。 Web服务器利用自己的私钥解密出会话密钥。 Web服务器利用会话密钥加密与客户端之间的通信。 从上面可以总结出HTTPS的优点： 客户端产生的密钥只有客户端和服务器端能得到； 加密的数据只有客户端和服务器端才能得到明文； 客户端到服务端的通信是安全的。另外谷歌曾在2014年8月份调整搜索引擎算法，并称“比起同等HTTP网站，采用HTTPS加密的网站在搜索结果中的排名将会更高”。 HTTPS的局限/缺点 我们说了这么多HTTPS的优点，难道它就没有缺点或者说是局限吗？当然有，毕竟万物不可完美！ HTTPS比HTTP耗费更多服务器资源（https其实就是建构在SSL/TLS之上的 http协议，所以要比较https比http多用多少服务器资源，主要看SSL/TLS本身消耗多少服务器资源。） 耗费的资源多，过程也复杂，想当然访问不如HTTP高效。大流量网站非必要也不会采用，流量成本太高。 HTTPS并不能防止站点被网络蜘蛛抓取。在某些情形中，被加密资源的URL可仅通过截获请求和响应的大小推得，这就可使攻击者同时知道明文（公开的静态内容）和密文（被加密过的明文），从而使选择密文攻击成为可能。 SSL证书需要钱，功能越强大的证书费用越高，个人网站、小网站没有必要一般不会用。 SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。 此文转自掘金]]></content>
+      <categories>
+        <category>网络协议</category>
+      </categories>
+      <tags>
+        <tag>http&amp;https</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[php常见的魔术方法]]></title>
+    <url>%2Fmagic.html</url>
+    <content type="text"><![CDATA[__construct 构造函数 初始化赋值 实例化对象的时候自己调用 __destruct 析构方法，PHP 将在对象被销毁前（即从内存中清除前）调用这个方法 __get ($property) 当调用一个未定义的属性时，此方法会被触发，传递的参数是被访问的属性名 __set ($property, $value) 给一个未定义的属性赋值时，此方法会被触发，传递的参数是被设置的属性名和值 这里的没有声明包括当使用对象调用时，访问控制为 proteced,private 的属性（即没有权限访问的属性）。 __isset ($property) 当在一个未定义的属性上调用 isset () 函数时调用此方法 __unset ($property) 当在一个未定义的属性上调用 unset () 函数时调用此方法 _call ($method, $arg_array) 当调用一个未定义的方法是调用此方法 __autoload 函数，它会在试图使用尚未被定义的类时自动调用。通过调用此函数，脚本引擎在 PHP 出错失败前有了最后一个机会加载所需的类。 clone 复制一个对象时自动调用 clone 方法，如果在对象复制需要执行某些初始化操作，可以在 clone 方法实现。 __toString 方法在将一个对象转化成字符串时自动调用，比如使用 echo 打印对象时。 __sleep 串行化的时候用 callStatic 它的工作方式类似于 call () 魔术方法，__callStatic () 是为了处理静态方法调用]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>魔术方法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown]]></title>
+    <url>%2Fmarkdown.html</url>
+    <content type="text"><![CDATA[markdown 笔记 基本语法可参考 Markdown 入门参考 markdown 可支持html写法 所以可使用html扩展页面 修改字体颜色 &lt;font color=&quot;颜色（red）&quot;&gt;修改字体颜色为红色&lt;/font&gt;修改字体颜色为红色 同理 修改字体大小 &lt;font size=&quot;1&quot;&gt;修改字体大小&lt;/font&gt; 修改字体大小 文字居中 &lt;center&gt;wniu&lt;/center&gt; wniu 图片设置宽高 居中显示 &lt;div align=center&gt;&lt;img width = &#39;宽度(50)&#39; height =&#39;高度(50)&#39; src =&quot;图片链接&quot;/&gt;&lt;/div&gt;]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[接口(interface)的概念]]></title>
+    <url>%2Finterface.html</url>
+    <content type="text"><![CDATA[PHP接口（interface）的特点 接口的方法必须是公开的。 接口的方法默认是抽象的，所以不在方法名前面加abstract。 接口可以定义常量，但不能定义成员属性，常量的定义和用法和类中常量一样。 类可以实现多个接口（相当于把多个功能集于一身，如厨房有各种厨具） 接口也可以继承接口。PHP同大多数的面向对象语言一样，并不支持多重继承。如果需要实现多重继承功能，在PHP中，可以通过接口，它是PHP解决多重继承问题的方法，在php5.4版本之后有个类的新特性trait，有兴趣的可以自行了解下。 接口的思想是指定一个实现了该接口的类必须实现的一系列函数。如果没有实现接口中指定的方法，将产生一个致命错误。当有很多人一起开发一个项目时，可能都会去调用别人写的一些类，那你就会问，我怎么知道他的某个功能的实现方法是怎么命名的呢，这个时候PHP接口类interface就起到作用了，当我们定义了一个接口类时，它里面的方式是下面的子类必须实现的，比如 : 12345 interface Shop&#123; public function buy(); public function sell(); public function view();&#125; 我声明一个shop接口类，定义了三个方法：买(buy),卖(sell),浏览(view),那么继承此类的所有子类都必须实现这3个方法少一个都不行，如果子类没有实现这些话，就无法运行。实际上接口类说白了，就是一个类的模板，一个类的规定，如果你属于这类，你就必须遵循我的规定，少一个都不行，但是具体你怎么去做，我不管，那是你的事，如： 123456789101112131415161718class Base implements Shop&#123; public function buy() &#123; // TODO: Implement tebuyst() method. &#125; public function sell() &#123; // TODO: Implement sell() method. &#125; public function view() &#123; // TODO: Implement view() method. &#125;&#125; 为什么要用接口？接口到底有什么好处？接口本身并不提供实现，只是提供一个规范。如果我们知道一个类实现了某个接口，那么就知道了可以调用该接口的哪些方法，我们只需要知道这些就够了。]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>interface</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用Vultr搭建自用ssr]]></title>
+    <url>%2Fssr.html</url>
+    <content type="text"><![CDATA[1 . 购买vps服务器 去 Vultr 官网注册一个账号。 选择服务器位置 选择系统类型 服务器配置选择(一般个人使用选最低价格就好) 最后选择 Deploy Now 开始部署服务器 2. 完成购买 在 Servers 里面可以看到部署好的服务器，点击 Manage 查看服务器信息。 点击查看服务体具体信息 连接服务器 mac可以直接打开终端 windows连接服务器可选择 xshell $ ssh -p 22 root@your IP Address 回车 输入密码 看到如下图 执行以下命令 $ wget --no-check-certificate https://freed.ga/github/shadowsocksR.sh; bash shadowsocksR.sh 若提示：wget :command not found 执行以下命令 $ yum install wget -y 密码可使用默认 也可以自己设置 回车 端口按推荐设置 回车 任意键开始搭建 耐心等待 安装好后如下图 界面显示ssr信息 配置好小飞机就可以科学上网啦 ssr客户端下载 mac版本下载 win版本下载]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>ssr</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[挂载oss]]></title>
+    <url>%2Foss.html</url>
+    <content type="text"><![CDATA[下载oss安装包1$ wget http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32196/cn_zh/1507811577850/ossfs_1.80.3_centos7.0_x86_64.rpm 安装1sudo yum localinstall ossfs_1.80.3_centos7.0_x86_64.rpm 设置bucket name 和 AccessKeyId/Secret信息，将其存放在/etc/passwd-ossfs 文件中 12$ echo my-bucket:my-access-key-id:my-access-key-secret &gt; /etc/passwd-ossfs$ chmod 640 /etc/passwd-ossfs 将OSS bucket mount到指定挂载程序目录。 1ossfs my-bucket my-mount-point -ourl=my-oss-endpoint]]></content>
+      <categories>
+        <category>阿里云</category>
+      </categories>
+      <tags>
+        <tag>oss</tag>
+      </tags>
+  </entry>
+</search>
