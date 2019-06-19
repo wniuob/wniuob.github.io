@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL -索引]]></title>
+    <url>%2Ftheindex.html</url>
+    <content type="text"><![CDATA[概述MySQL中索引有两大存储类型 BTREE和HASH。 MyISAM和InnoDB存储引擎只支持BTREE索引。 MEMORY/HEAP存储引擎可以支持HASH和BTREE索引。使用索引的优点 加快数据的查询速度。 唯一索引，可以保证数据库表中每一行数据的唯一性。 在实现数据的参考完整性方面，可以加速表和表之间的连接。 在使用分组和排序子句进行数据查询时，也可以显著减少查询中分组和排序的时间。 使用索引的缺点 占用磁盘空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果有大量的索引，索引文件可能比数据文件更快达到最大文件尺寸（合理运用，问题不大）。 损耗性能（添加、修改、删除） 索引需要动态地维护。 索引分类 普通索引：最基本的索引，没有任何限制，是我们大多数情况下使用到的索引。 唯一索引：与普通索引类型，不同的是唯一索引的列值必须唯一，但允许为空值。 全文索引：全文索引（FULLTEXT）仅可以适用于MyISAM引擎的数据表；作用于CHAR、VARCHAR、TEXT数据类型的列。 组合索引：将几个列作为一条索引进行检索，使用最左匹配原则。 建立索引的原则 合理设计和使用索引。 在关键字段的索引上，建与不建索引，查询速度相差近100倍。 差的索引和没有索引效果一样。 索引并非越多越好，因为维护索引需要成本。 每个表的索引应在5个以下，应合理利用部分索引和联合索引。 不在结果集中的结果单一的列上建索引。比如性别字段只有0和1两种结果集，在这个字段上建索引并不会有太多帮助。 建索引的字段结果集最好分布均匀，或者符合正态分布。]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库基本语句优化十个原则]]></title>
+    <url>%2Fmysql.html</url>
+    <content type="text"><![CDATA[尽量避免在列上进行运算,这样会导致索引失效.原句: SELECT * FROM t WHERE YEAR(d) &gt;= 2011;优化: SELECT * FROM t WHERE d &gt;= &#39;2011-01-01&#39;; 使用JOIN时,应该用小结果集驱动大结果集.同时把复杂的JOIN查询拆分为多个query.因为JOIN多个表时,可能导致更多的锁定和堵塞.SELECT * FROM a JOIN b ON a.id=b.id LEFT JOIN c ON c.time=a.date LEFT JOIN d ON c.pid=d.aid LEFT JOIN e ON e.cid=a.did 注意LIKE模糊查询的使用,避免%%原句:SELECT * FROM t WHERE name LIKE &#39;%de%&#39;;优化: SELECT * FROM t WHERE name &gt;= &#39;de&#39; AND name &lt; &#39;df&#39;; 仅列出需要查询的字段,这对速度不会有明显营销,主要考虑节省内存.原句: SELECT * FROM test;优化: SELECT name FROM test; 使用批量插入语句节省交互.原句:INSERT INTO t(id,name) values(1,&#39;a&#39;);INSERT INTO t(id,name) values(2,&#39;b&#39;);INSERT INTO t(id,name) values(3,&#39;c&#39;);优化:INSERT INTO t(id,name) values(1,&#39;a&#39;),(2,&#39;b&#39;),(3,&#39;c&#39;); limit的基数比较大的时候使用between.原句: SELECT * FROM article order by id limit 10000,10;优化: SELECT * FROM article where id between 10000 and 10010 order by id; ps:between限定比limit快,所以在海量数据访问时,建议使用between或者是where替换掉limit. 但是between也有缺陷,如果id中间有断行或者是中间部分id不读取的情况,总读取的数量会少于预计数量!(在读取比较后面的数据时,使用desc方式把数据反向查找,以减少前段数据的扫描,让limit的基数越小越好) 不要使用rand函数获取多条随机记录.原句: select * from table order by rand() limit 20;优化: select * from table as a join (select round(rand() * ((select MAX(id) from table) - (select min(id) from table)) + (select min(id) from table )) as id ) as b where a.id&gt;b.id order by a.id limit 1;当然也可以使用PHP产生随机数传给MySQL 避免使用NULL. 不要使用count(id),而应该是count(*) 不要做无谓的排序操作,而应尽可能在索引中完成排序. 本文出自于《PHP核心技术与最佳实践》]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[http / https 详解]]></title>
     <url>%2Fhttp.html</url>
     <content type="text"><![CDATA[HTTP和HTTPS基本概念 深入学习这个东西前，我们先来从维基百科上看看它俩的概念。 HTTP:超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议[1]。HTTP是万维网的数据通信的基础。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。 HTTPS：超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种通过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用SSL/TLS来加密数据包。HTTPS开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。这个协议由网景公司（Netscape）在1994年首次提出，随后扩展到互联网上。历史上，HTTPS连接经常用于万维网上的交易支付和企业信息系统中敏感信息的传输。在2000年代晚期和2010年代早期，HTTPS开始广泛使用于保护所有类型网站上的网页真实性，保护账户和保持用户通信，身份和网络浏览的私密性。 HTTP和HTTPS的差异 从上面概念也可以看出来HTTP是不安全的，且攻击者通过监听和中间人攻击等手段，可以获取网站帐户和敏感信息等。HTTPS被设计为可防止前述攻击，并在正确配置时被认为是安全的. HTTP的URL由“http://”起始且默认使用端口80，而HTTPS的URL由“https://”起始且默认使用端口443。 HTTP协议运行在TCP之上，所有传输的内容都是明文，客户端和服务器端都无法验证对方的身份。HTTPS是运行在SSL/TLS之上的HTTP协议，SSL/TLS运行在TCP之上。所有传输的内容都经过加密，加密采用对称加密，但对称加密的密钥用服务器方的证书进行了非对称加密。 对称加密：密钥只有一个，加密解密为同一个密码，且加解密速度快，典型的对称加密算法有DES、AES等； 非对称加密：密钥成对出现（且根据公钥无法推知私钥，根据私钥也无法推知公钥），加密解密使用不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等。 HTTPS工作原理下面看一下网站访问过程：大家很明显发现目前大部分网站使用的还是http协议，下面我们通过一个图片很容易的了解一下网站访问的一个过程。 了解完网站访问后我们来看一下使用HTTPS的工作原理 客户使用HTTPS的URL访问Web服务器，要求与Web服务器建立SSL连接。 Web服务器收到客户端请求后，会将网站的证书信息（证书中包含公钥）传送一份给客户端。 客户端的浏览器与Web服务器开始协商SSL/TLS连接的安全等级，也就是信息加密的等级。 客户端的浏览器根据双方同意的安全等级，建立会话密钥，然后利用网站的公钥将会话密钥加密，并传送给网站。 Web服务器利用自己的私钥解密出会话密钥。 Web服务器利用会话密钥加密与客户端之间的通信。 从上面可以总结出HTTPS的优点： 客户端产生的密钥只有客户端和服务器端能得到； 加密的数据只有客户端和服务器端才能得到明文； 客户端到服务端的通信是安全的。另外谷歌曾在2014年8月份调整搜索引擎算法，并称“比起同等HTTP网站，采用HTTPS加密的网站在搜索结果中的排名将会更高”。 HTTPS的局限/缺点 我们说了这么多HTTPS的优点，难道它就没有缺点或者说是局限吗？当然有，毕竟万物不可完美！ HTTPS比HTTP耗费更多服务器资源（https其实就是建构在SSL/TLS之上的 http协议，所以要比较https比http多用多少服务器资源，主要看SSL/TLS本身消耗多少服务器资源。） 耗费的资源多，过程也复杂，想当然访问不如HTTP高效。大流量网站非必要也不会采用，流量成本太高。 HTTPS并不能防止站点被网络蜘蛛抓取。在某些情形中，被加密资源的URL可仅通过截获请求和响应的大小推得，这就可使攻击者同时知道明文（公开的静态内容）和密文（被加密过的明文），从而使选择密文攻击成为可能。 SSL证书需要钱，功能越强大的证书费用越高，个人网站、小网站没有必要一般不会用。 SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。 此文转自掘金]]></content>

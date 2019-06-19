@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-06-18T06:39:53.356Z</updated>
+  <updated>2019-06-19T07:35:20.155Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL -索引</title>
+    <link href="/theindex.html"/>
+    <id>/theindex.html</id>
+    <published>2019-06-19T06:14:43.000Z</published>
+    <updated>2019-06-19T07:35:20.155Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><h5 id="MySQL中索引有两大存储类型-BTREE和HASH。"><a href="#MySQL中索引有两大存储类型-BTREE和HASH。" class="headerlink" title="MySQL中索引有两大存储类型 BTREE和HASH。"></a>MySQL中索引有两大存储类型 <code>BTREE和HASH</code>。</h5><ul><li>MyISAM和InnoDB存储引擎只支持BTREE索引。</li><li>MEMORY/HEAP存储引擎可以支持HASH和BTREE索引。<h5 id="使用索引的优点"><a href="#使用索引的优点" class="headerlink" title="使用索引的优点"></a>使用索引的优点</h5><blockquote><ol><li>加快数据的查询速度。  </li><li>唯一索引，可以保证数据库表中每一行数据的唯一性。  </li><li>在实现数据的参考完整性方面，可以加速表和表之间的连接。  </li><li>在使用分组和排序子句进行数据查询时，也可以显著减少查询中分组和排序的时间。</li></ol></blockquote><h6 id="使用索引的缺点"><a href="#使用索引的缺点" class="headerlink" title="使用索引的缺点"></a>使用索引的缺点</h6><blockquote><ol><li>占用磁盘空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果有大量的索引，索引文件可能比数据文件更快达到最大文件尺寸（合理运用，问题不大）。  </li><li>损耗性能（添加、修改、删除） 索引需要动态地维护。</li></ol></blockquote></li></ul><h5 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h5><ol><li><p>普通索引：最基本的索引，没有任何限制，是我们大多数情况下使用到的索引。</p></li><li><p>唯一索引：与普通索引类型，不同的是唯一索引的列值必须唯一，但允许为空值。</p></li><li><p>全文索引：全文索引（FULLTEXT）仅可以适用于MyISAM引擎的数据表；作用于CHAR、VARCHAR、TEXT数据类型的列。</p></li><li><p>组合索引：将几个列作为一条索引进行检索，使用最左匹配原则。</p></li></ol><h5 id="建立索引的原则"><a href="#建立索引的原则" class="headerlink" title="建立索引的原则"></a>建立索引的原则</h5><ul><li>合理设计和使用索引。</li><li>在关键字段的索引上，建与不建索引，查询速度相差近100倍。</li><li>差的索引和没有索引效果一样。</li><li>索引并非越多越好，因为维护索引需要成本。</li><li>每个表的索引应在5个以下，应合理利用部分索引和联合索引。</li><li>不在结果集中的结果单一的列上建索引。比如性别字段只有0和1两种结果集，在这个字段上建索引并不会有太多帮助。</li><li>建索引的字段结果集最好分布均匀，或者符合正态分布。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h4&gt;&lt;h5 id=&quot;MySQL中索引有两大存储类型-BTREE和HASH。&quot;&gt;&lt;a href=&quot;#MySQL中索引有两大存储类型-BTREE和HASH
+      
+    
+    </summary>
+    
+      <category term="mysql" scheme="/categories/mysql/"/>
+    
+    
+      <category term="笔记" scheme="/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库基本语句优化十个原则</title>
+    <link href="/mysql.html"/>
+    <id>/mysql.html</id>
+    <published>2019-06-19T05:40:02.000Z</published>
+    <updated>2019-06-19T06:06:27.449Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>尽量避免在列上进行运算,这样会导致索引失效.<br>原句: <code>SELECT * FROM t WHERE YEAR(d) &gt;= 2011;</code><br>优化: <code>SELECT * FROM t WHERE d &gt;= &#39;2011-01-01&#39;;</code></li><li>使用JOIN时,应该用小结果集驱动大结果集.同时把复杂的JOIN查询拆分为多个query.因为JOIN多个表时,可能导致更多的锁定和堵塞.<br><code>SELECT * FROM a JOIN b ON a.id=b.id LEFT JOIN c ON c.time=a.date LEFT JOIN d ON c.pid=d.aid LEFT JOIN e ON e.cid=a.did</code></li><li>注意LIKE模糊查询的使用,避免%%<br>原句:<code>SELECT * FROM t WHERE name LIKE &#39;%de%&#39;;</code><br>优化: <code>SELECT * FROM t WHERE name &gt;= &#39;de&#39; AND name &lt; &#39;df&#39;;</code></li><li>仅列出需要查询的字段,这对速度不会有明显营销,主要考虑节省内存.<br>原句: <code>SELECT * FROM test;</code><br>优化: <code>SELECT name FROM test;</code></li><li>使用批量插入语句节省交互.<br>原句:<br><code>INSERT INTO t(id,name) values(1,&#39;a&#39;);</code><br><code>INSERT INTO t(id,name) values(2,&#39;b&#39;);</code><br><code>INSERT INTO t(id,name) values(3,&#39;c&#39;);</code><br>优化:<br><code>INSERT INTO t(id,name) values(1,&#39;a&#39;),(2,&#39;b&#39;),(3,&#39;c&#39;);</code></li><li>limit的基数比较大的时候使用between.<br>原句: <code>SELECT * FROM article order by id limit 10000,10;</code><br>优化: <code>SELECT * FROM article where id between 10000 and 10010 order by id;</code><ul><li>ps:between限定比limit快,所以在海量数据访问时,建议使用between或者是where替换掉limit.</li><li>但是between也有缺陷,如果id中间有断行或者是中间部分id不读取的情况,总读取的数量会少于预计数量!(在读取比较后面的数据时,使用desc方式把数据反向查找,以减少前段数据的扫描,让limit的基数越小越好)</li></ul></li><li>不要使用rand函数获取多条随机记录.<br>原句: <code>select * from table order by rand() limit 20;</code><br>优化: <code>select * from table as a join (select round(rand() * ((select MAX(id) from table) - (select min(id) from table)) + (select min(id) from table )) as id ) as b where a.id&gt;b.id order by a.id limit 1;</code><br>当然也可以使用PHP产生随机数传给MySQL</li><li>避免使用NULL.</li><li>不要使用count(id),而应该是count(*)</li><li>不要做无谓的排序操作,而应尽可能在索引中完成排序.  </li></ol><p>本文出自于《PHP核心技术与最佳实践》</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;尽量避免在列上进行运算,这样会导致索引失效.&lt;br&gt;原句: &lt;code&gt;SELECT * FROM t WHERE YEAR(d) &amp;gt;= 2011;&lt;/code&gt;&lt;br&gt;优化: &lt;code&gt;SELECT * FROM t WHERE d &amp;gt;= &amp;#3
+      
+    
+    </summary>
+    
+      <category term="mysql" scheme="/categories/mysql/"/>
+    
+    
+      <category term="笔记" scheme="/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="优化" scheme="/tags/%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>http / https 详解</title>
