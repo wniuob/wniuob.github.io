@@ -135,7 +135,7 @@
 
 
   <meta name="description" content="尽量避免在列上进行运算,这样会导致索引失效.原句: SELECT * FROM t WHERE YEAR(d) &amp;gt;= 2011;优化: SELECT * FROM t WHERE d &amp;gt;= &amp;#39;2011-01-01&amp;#39;; 使用JOIN时,应该用小结果集驱动大结果集.同时把复杂的JOIN查询拆分为多个query.因为JOIN多个表时,可能导致更多的锁定和堵塞.SELECT">
-<meta name="keywords" content="笔记,优化">
+<meta name="keywords" content="优化,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库基本语句优化十个原则">
 <meta property="og:url" content="/mysql.html">
@@ -323,7 +323,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">8</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
 
   </li>
         
@@ -342,7 +342,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -361,7 +361,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">11</span></a>
 
   </li>
 
@@ -585,9 +585,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
-          
             <a href="/tags/优化/" rel="tag"><i class="fa fa-tag"></i> 优化</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
           
         </div>
       
@@ -679,7 +679,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -708,7 +708,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -741,7 +743,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
