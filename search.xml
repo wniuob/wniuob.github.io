@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux时区设置]]></title>
+    <url>%2Flinux-date.html</url>
+    <content type="text"><![CDATA[查看系统时间及时区12[wniuob@wniuob ~]$ date2019年 06月 29日 星期六 02:59:42 UTC 修改系统时区12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061[wniuob@wniuob ~]$ tzselectPlease identify a location so that time zone rules can be set correctly.Please select a continent or ocean. 1) Africa 2) Americas 3) Antarctica 4) Arctic Ocean 5) Asia 6) Atlantic Ocean 7) Australia 8) Europe 9) Indian Ocean10) Pacific Ocean11) none - I want to specify the time zone using the Posix TZ format.#? 5Please select a country. 1) Afghanistan 18) Israel 35) Palestine 2) Armenia 19) Japan 36) Philippines 3) Azerbaijan 20) Jordan 37) Qatar 4) Bahrain 21) Kazakhstan 38) Russia 5) Bangladesh 22) Korea (North) 39) Saudi Arabia 6) Bhutan 23) Korea (South) 40) Singapore 7) Brunei 24) Kuwait 41) Sri Lanka 8) Cambodia 25) Kyrgyzstan 42) Syria 9) China 26) Laos 43) Taiwan10) Cyprus 27) Lebanon 44) Tajikistan11) East Timor 28) Macau 45) Thailand12) Georgia 29) Malaysia 46) Turkmenistan13) Hong Kong 30) Mongolia 47) United Arab Emirates14) India 31) Myanmar (Burma) 48) Uzbekistan15) Indonesia 32) Nepal 49) Vietnam16) Iran 33) Oman 50) Yemen17) Iraq 34) Pakistan#? 9Please select one of the following time zone regions.1) Beijing Time2) Xinjiang Time#? 1The following information has been given: China Beijing TimeTherefore TZ='Asia/Shanghai' will be used.Local time is now: Sat Jun 29 11:00:22 CST 2019.Universal Time is now: Sat Jun 29 03:00:22 UTC 2019.Is the above information OK?1) Yes2) No#? yesPlease enter 1 for Yes, or 2 for No.#? 1You can make this change permanent for yourself by appending the line TZ='Asia/Shanghai'; export TZto the file '.profile' in your home directory; then log out and log in again.Here is that TZ value again, this time on standard output so that youcan use the /usr/bin/tzselect command in shell scripts:Asia/Shanghai 如上依次输入Asia(5)-&gt;China(9)-&gt;Beijing Time(1)-&gt;Yes(yes)-&gt;Yes(1); 执行命令 ps:这里需要root权限 1234$ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime$ vi /etc/profile新增 TZ='Asia/Shanghai' 查看mysql时区登录mysql后 123456789mysql&gt; show variables like "%time_zone%";+------------------+--------+| Variable_name | Value |+------------------+--------+| system_time_zone | CST || time_zone | SYSTEM |+------------------+--------+2 rows in set (0.00 sec)默认：time_zone说明mysql使用system的时区，system_time_zone说明system使用CST时区 重启linux 1$ shutdown -r now]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Mac 安装Python3.7.x 并设置为默认版本]]></title>
     <url>%2Fpython.html</url>
     <content type="text"><![CDATA[因Mac自带Python版本是2.7 手动升级并配置默认 选择brew 安装python3 $ brew install python3 安装好之后 查看python安装目录 $ which python3 配置python的外部环境变量 $ vi ~/.bash_profile 新增 123456# Setting PATH for Python 3.7# The original version is saved in .bash_profile.pysavePATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:$&#123;PATH&#125;"export PATHalias python="/Library/Frameworks/Python.framework/Versions/3.7/bin/python3" 修改完成后执行命令 $ source ~/.bash_profile 重新打开新的命令行窗口 运行 python –version 收工～]]></content>
