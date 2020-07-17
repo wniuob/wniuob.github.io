@@ -1,2 +1,2 @@
 # wniuob.github.io
-wniu private
+wniu
